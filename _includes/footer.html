@@ -1,14 +1,39 @@
 <!-- CSS KHUSUS FOOTER DAN BANTUAN -->
 <style>
+    /* --- FLOATING WHATSAPP BUTTON --- */
+    .wa-float {
+        position: fixed;
+        width: 50px;
+        height: 50px;
+        bottom: 30px;
+        right: 30px;
+        background-color: #25d366;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 26px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: transform 0.3s;
+    }
+
+    .wa-float:hover {
+        transform: scale(1.1);
+    }
+
     /* --- SUPPORT SECTION (BANTUAN) --- */
     .support-section {
         padding: 80px 5%;
-        background-color: var(--bg-light);
+        background-color: var(--bg-light, #F9F8F6);
         text-align: center;
     }
 
     .support-section .subtitle {
-        color: var(--light-green);
+        color: var(--light-green, #C68B59);
         font-style: italic;
         font-weight: 600;
         display: block;
@@ -16,10 +41,11 @@
     }
 
     .support-section h2 {
+        font-family: 'Playfair Display', serif;
         font-size: 38px;
         margin-bottom: 50px;
         line-height: 1.2;
-        color: var(--text-dark);
+        color: var(--text-dark, #1E1E1E);
     }
 
     .support-grid {
@@ -30,7 +56,7 @@
     }
 
     .support-card {
-        background: #f8f9fa;
+        background: #ffffff;
         border: 1px solid #eaeaea;
         padding: 40px 30px;
         border-radius: 20px;
@@ -38,25 +64,25 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
-        transition: transform 0.3s;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+        transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .support-card:hover {
         transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     }
 
-    /* Kartu tengah berwarna hijau gradasi */
     .support-card.featured {
-        background: linear-gradient(135deg, var(--light-green), var(--dark-green));
+        background: linear-gradient(135deg, var(--light-green, #C68B59), var(--dark-green, #2C1D11));
         color: white;
         border: none;
     }
 
     .support-icon {
-        width: 50px;
-        height: 50px;
-        background: var(--light-green);
+        width: 55px;
+        height: 55px;
+        background: var(--light-green, #C68B59);
         color: white;
         border-radius: 12px;
         display: flex;
@@ -67,8 +93,8 @@
     }
 
     .support-card.featured .support-icon {
-        background: var(--lime-yellow);
-        color: var(--text-dark);
+        background: #E0A96D;
+        color: var(--text-dark, #1E1E1E);
     }
 
     .support-card h3 {
@@ -80,7 +106,7 @@
 
     .support-card p {
         font-size: 14px;
-        color: var(--text-gray);
+        color: var(--text-gray, #666666);
         margin-bottom: 25px;
         line-height: 1.6;
         flex-grow: 1;
@@ -91,7 +117,7 @@
     }
 
     .btn-support {
-        background-color: var(--light-green);
+        background-color: var(--light-green, #C68B59);
         color: white;
         padding: 10px 25px;
         border-radius: 20px;
@@ -99,6 +125,7 @@
         font-size: 13px;
         text-decoration: none;
         transition: 0.3s;
+        display: inline-block;
     }
 
     .btn-support:hover {
@@ -107,12 +134,12 @@
 
     .support-card.featured .btn-support {
         background-color: white;
-        color: var(--text-dark);
+        color: var(--dark-green, #2C1D11);
     }
 
     /* --- PRE-FOOTER BANNER --- */
     .pre-footer-banner {
-        background: linear-gradient(rgba(26, 59, 43, 0.7), rgba(26, 59, 43, 0.7)), url('https://images.unsplash.com/photo-1596646505708-7243c2005a96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover;
+        background: linear-gradient(rgba(44, 29, 17, 0.75), rgba(44, 29, 17, 0.75)), url('https://images.unsplash.com/photo-1596646505708-7243c2005a96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover;
         padding: 80px 5%;
         text-align: center;
         color: white;
@@ -125,7 +152,7 @@
         width: 60px;
         height: 60px;
         background: white;
-        color: var(--light-green);
+        color: var(--light-green, #C68B59);
         border-radius: 50%;
         display: flex;
         justify-content: center;
@@ -133,9 +160,11 @@
         font-size: 24px;
         margin-bottom: 20px;
         cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
     .pre-footer-banner h2 {
+        font-family: 'Playfair Display', serif;
         font-size: 42px;
         margin-bottom: 15px;
         line-height: 1.2;
@@ -151,9 +180,9 @@
 
     /* --- SOCIAL MEDIA BAR & MAIN FOOTER --- */
     .footer-social {
-        background-color: var(--light-green);
+        background-color: var(--light-green, #C68B59);
         text-align: center;
-        padding: 20px;
+        padding: 15px 20px;
         color: white;
         font-weight: 600;
         display: flex;
@@ -169,7 +198,7 @@
 
     .social-icons a {
         background: white;
-        color: var(--light-green);
+        color: var(--light-green, #C68B59);
         width: 32px;
         height: 32px;
         border-radius: 50%;
@@ -178,17 +207,17 @@
         align-items: center;
         text-decoration: none;
         font-weight: bold;
-        font-size: 14px;
+        font-size: 13px;
         transition: 0.3s;
     }
 
     .social-icons a:hover {
-        background: var(--dark-green);
+        background: var(--dark-green, #2C1D11);
         color: white;
     }
 
     footer {
-        background-color: var(--dark-green);
+        background-color: var(--dark-green, #2C1D11);
         color: white;
         padding: 60px 5% 20px;
     }
@@ -231,7 +260,7 @@
         font-family: 'Inter', sans-serif;
         margin-bottom: 20px;
         font-size: 16px;
-        color: var(--lime-yellow);
+        color: #E0A96D;
     }
 
     .footer-col ul {
@@ -251,7 +280,7 @@
     }
 
     .footer-col ul li a:hover {
-        color: var(--lime-yellow);
+        color: #E0A96D;
     }
 
     .newsletter input {
@@ -269,7 +298,7 @@
         padding: 15px;
         border-radius: 8px;
         border: none;
-        background-color: var(--light-green);
+        background-color: var(--light-green, #C68B59);
         color: white;
         font-weight: 600;
         cursor: pointer;
@@ -277,7 +306,7 @@
     }
 
     .newsletter button:hover {
-        background-color: #7a9c32;
+        background-color: #a87143;
     }
 
     .footer-bottom {
@@ -307,58 +336,98 @@
         .support-grid {
             grid-template-columns: 1fr;
         }
+
+        .footer-main {
+            flex-direction: column;
+        }
     }
 </style>
-<!-- SOCIAL MEDIA BAR -->
+
+<!-- 1. SUPPORT SECTION -->
+<section class="support-section">
+    <span class="subtitle">Need Any Assistance?</span>
+    <h2>How Can We Help Your Business?</h2>
+    <div class="support-grid container">
+        <div class="support-card">
+            <div class="support-icon">💬</div>
+            <h3>General Inquiry</h3>
+            <p>Have questions about our vanilla bean grades, origins, or specs? Ask us anything.</p>
+            <a href="{{ '/contact.html' | relative_url }}" class="btn-support">Ask Question</a>
+        </div>
+
+        <div class="support-card featured">
+            <div class="support-icon">📦</div>
+            <h3>Bulk & B2B Orders</h3>
+            <p>Looking for reliable wholesale suppliers for international export? Get direct factory pricing.</p>
+            <a href="{{ '/contact.html' | relative_url }}" class="btn-support">Request Quote</a>
+        </div>
+
+        <div class="support-card">
+            <div class="support-icon">📄</div>
+            <h3>Custom Specs</h3>
+            <p>Need custom moisture levels, cut vanilla, or private label packaging? We're tailored to help.</p>
+            <a href="{{ '/contact.html' | relative_url }}" class="btn-support">Contact Sales</a>
+        </div>
+    </div>
+</section>
+
+<!-- 2. PRE-FOOTER BANNER -->
+<section class="pre-footer-banner">
+    <div class="play-btn-small">▶</div>
+    <h2>Experience Authentic Indonesian Vanilla</h2>
+    <p>Directly sourced from trusted local farmers, processed with organic standards, and delivered globally.</p>
+</section>
+
+<!-- 3. SOCIAL MEDIA BAR -->
 <div class="footer-social">
     Follow our social :
     <div class="social-icons">
-        <a href="#">fb</a> <!-- Sesuai PDF: essenceindonesia -->
-        <a href="#">ig</a> <!-- Sesuai PDF: essence.indonesia -->
+        <a href="https://facebook.com/essenceindonesia" target="_blank" title="Facebook" rel="noopener">FB</a>
+        <a href="https://instagram.com/essence.indonesia" target="_blank" title="Instagram" rel="noopener">IG</a>
     </div>
 </div>
 
-<!-- MAIN FOOTER -->
+<!-- 4. MAIN FOOTER -->
 <footer>
     <div class="footer-main">
         <div class="footer-col brand">
             <div class="logo">
-                <img src="gambar/logo.png" alt="Logo" style="height:35px;">
+                <img src="{{ '/gambar/logo.png' | relative_url }}" alt="Logo" style="height:35px;">
                 <span style="color:white; font-size: 22px; font-weight: bold; margin-left: 8px;">Essence Indonesia</span>
             </div>
             <p>Pure Vanilla. Rich Heritage. Evolving from a trusted family business, we provide 100% authentic Indonesian origin vanilla with strict quality control and global export standards.</p>
         </div>
+
         <div class="footer-col">
             <h4>Company</h4>
             <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="profile.php">Profile</a></li>
-                <li><a href="product.php">Our Product</a></li>
-                <li><a href="blog.php">Blog</a></li>
-                <li><a href="contact.php">Contact</a></li>
+                <li><a href="{{ '/' | relative_url }}">Home</a></li>
+                <li><a href="{{ '/profile.html' | relative_url }}">Profile</a></li>
+                <li><a href="{{ '/product.html' | relative_url }}">Our Product</a></li>
+                <li><a href="{{ '/blog.html' | relative_url }}">Blog</a></li>
+                <li><a href="{{ '/contact.html' | relative_url }}">Contact</a></li>
             </ul>
         </div>
+
         <div class="footer-col newsletter">
             <h4>Subscribe Newsletter</h4>
-            <input type="email" placeholder="Email">
-            <button>Subscribe Newsletter</button>
+            <form action="#" method="post" onsubmit="event.preventDefault();">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe Newsletter</button>
+            </form>
         </div>
     </div>
 
     <div class="footer-bottom">
         <div class="footer-bottom-links">
-            <a href="#">Terms & Conditions</a>
-            <a href="#">Privacy Policy</a>
+            <a href="{{ '/terms.html' | relative_url }}">Terms &amp; Conditions</a>
+            <a href="{{ '/privacy.html' | relative_url }}">Privacy Policy</a>
         </div>
         <div>
-            Copyright &copy;2026 Essence Indonesia, All rights reserved.
+            Copyright &copy; {{ 'now' | date: "%Y" }} Essence Indonesia. All rights reserved.
         </div>
     </div>
 </footer>
 
-<!-- Floating WA -->
-<a href="https://wa.me/6289669241131" target="_blank" class="wa-float">💬</a>
-
-</body>
-
-</html>
+<!-- 5. FLOATING WHATSAPP -->
+<a href="https://wa.me/6289669241131" target="_blank" rel="noopener" class="wa-float" title="Chat Via WhatsApp">💬</a>

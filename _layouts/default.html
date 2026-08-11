@@ -1,0 +1,42 @@
+---
+---
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'id' }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Title & SEO Meta Tags -->
+    <title>{% if page.title %}{{ page.title }} - Essence Indonesia{% else %}Essence Indonesia - Pure Vanilla. Rich Heritage.{% endif %}</title>
+    {% if page.description %}
+    <meta name="description" content="{{ page.description }}">
+    {% else %}
+    <meta name="description" content="Pure Vanilla. Rich Heritage. Providing 100% authentic Indonesian origin vanilla with strict quality control and global export standards.">
+    {% endif %}
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ '/gambar/logo.png' | relative_url }}">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- CSS Utama (Jika ada file CSS terpisah di folder assets) -->
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" onerror="this.remove()">
+</head>
+<body>
+
+    <!-- Header Include -->
+    {% include header.html %}
+
+    <!-- Konten Halaman Utama -->
+    <main>
+        {{ content }}
+    </main>
+
+    <!-- Footer Include -->
+    {% include footer.html %}
+
+</body>
+</html>

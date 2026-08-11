@@ -1,0 +1,34 @@
+# ==========================================
+# SITE CONFIGURATION - ESSENCE INDONESIA
+# ==========================================
+
+title: Essence Indonesia
+email: contact@essenceindonesia.com
+description: "Pure Vanilla. Rich Heritage. Providing 100% authentic Indonesian origin vanilla with strict quality control and global export standards."
+lang: id
+
+# ==========================================
+# URL & BUILD CONFIGURATION
+# ==========================================
+
+# URL Utama Domain / GitHub Pages
+url: "https://shiraxs.github.io"
+
+# Catatan BaseURL:
+# 1. Jika di-host di Root User Page (https://shiraxs.github.io) -> biarkan baseurl: ""
+# 2. Jika di-host di Project Repo (https://shiraxs.github.io/nama-repo) -> ubah menjadi baseurl: "/nama-repo"
+baseurl: ""
+
+# Engine Markdown
+markdown: kramdown
+
+# ==========================================
+# FILE EXCLUSION
+# ==========================================
+# Mencegah Jekyll memproses file yang tidak perlu ditampilkan di situs web
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - node_modules/
+  - vendor/

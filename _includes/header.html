@@ -1,0 +1,208 @@
+<!-- CSS KHUSUS HEADER / NAVBAR -->
+<style>
+    :root {
+        --dark-green: #2C1D11;
+        --light-green: #C68B59;
+        --bg-light: #F9F8F6;
+        --text-dark: #1E1E1E;
+        --text-gray: #666666;
+    }
+
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 5%;
+        background-color: #ffffff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo {
+        font-family: 'Playfair Display', serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--dark-green);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .logo img {
+        height: 35px;
+        width: auto;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: var(--text-dark);
+        font-weight: 500;
+        font-size: 15px;
+        transition: color 0.3s;
+        position: relative;
+    }
+
+    .nav-links a:hover, 
+    .nav-links a.active {
+        color: var(--light-green);
+    }
+
+    .nav-links a.active::after {
+        content: '';
+        position: absolute;
+        bottom: -6px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--light-green);
+        border-radius: 2px;
+    }
+
+    .btn-contact {
+        background-color: var(--light-green);
+        color: #ffffff !important;
+        padding: 10px 22px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: background-color 0.3s, transform 0.2s;
+        display: inline-block;
+    }
+
+    .btn-contact:hover {
+        background-color: #a87143;
+        transform: translateY(-1px);
+    }
+
+    /* --- HAMBURGER MENU (MOBILE) --- */
+    .menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 28px;
+        height: 20px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1001;
+    }
+
+    .menu-toggle span {
+        width: 100%;
+        height: 3px;
+        background-color: var(--dark-green);
+        border-radius: 2px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* RESPONSIVE BREAKPOINT */
+    @media (max-width: 768px) {
+        .menu-toggle {
+            display: flex;
+        }
+
+        .nav-wrapper {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 75%;
+            max-width: 300px;
+            height: 100vh;
+            background-color: #ffffff;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            padding: 80px 30px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            transition: right 0.3s ease-in-out;
+        }
+
+        .nav-wrapper.active {
+            right: 0;
+        }
+
+        .nav-links {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .nav-links a.active::after {
+            display: none;
+        }
+
+        .btn-contact {
+            text-align: center;
+            width: 100%;
+        }
+    }
+</style>
+
+<!-- HEADER COMPONENT -->
+<header class="header-container">
+    <a href="{{ '/' | relative_url }}" class="logo">
+        <img src="{{ '/gambar/logo.png' | relative_url }}" alt="Essence Indonesia Logo" onerror="this.style.display='none'">
+        <span>Essence Indonesia</span>
+    </a>
+
+    <!-- TOMBOL MOBILE TOGGLE -->
+    <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle Navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- WRAPPER NAVIGASI -->
+    <div class="nav-wrapper" id="nav-wrapper">
+        <ul class="nav-links">
+            <li>
+                <a href="{{ '/' | relative_url }}" class="{% if page.url == '/' or page.url == '/index.html' %}active{% endif %}">Home</a>
+            </li>
+            <li>
+                <a href="{{ '/profile.html' | relative_url }}" class="{% if page.url == '/profile.html' %}active{% endif %}">Profile</a>
+            </li>
+            <li>
+                <a href="{{ '/product.html' | relative_url }}" class="{% if page.url == '/product.html' %}active{% endif %}">Products</a>
+            </li>
+            <li>
+                <a href="{{ '/blog.html' | relative_url }}" class="{% if page.url == '/blog.html' %}active{% endif %}">Blog</a>
+            </li>
+        </ul>
+        <a href="{{ '/contact.html' | relative_url }}" class="btn-contact">Contact Us</a>
+    </div>
+</header>
+
+<!-- JAVASCRIPT TOGGLE MENU MOBILE -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const navWrapper = document.getElementById('nav-wrapper');
+
+        if (menuBtn && navWrapper) {
+            menuBtn.addEventListener('click', function () {
+                navWrapper.classList.toggle('active');
+            });
+
+            // Tutup menu saat mengeklik di luar area navigasi
+            document.addEventListener('click', function (event) {
+                if (!navWrapper.contains(event.target) && !menuBtn.contains(event.target)) {
+                    navWrapper.classList.remove('active');
+                }
+            });
+        }
+    });
+</script>

@@ -1,0 +1,238 @@
+---
+layout: default
+title: Blog & News - Essence Indonesia
+---
+
+<!-- CSS KHUSUS HALAMAN BLOG -->
+<style>
+    /* --- 1. BLOG HERO BANNER --- */
+    .blog-hero {
+        background: linear-gradient(rgba(44, 29, 17, 0.65), rgba(44, 29, 17, 0.75)), url('{{ "/gambar/gbg.png" | relative_url }}') center/cover;
+        padding: 120px 5%;
+        text-align: left;
+        color: white;
+    }
+
+    .blog-hero h1 {
+        font-size: 54px;
+        margin-bottom: 15px;
+        font-family: 'Playfair Display', serif;
+    }
+
+    .blog-hero p {
+        font-size: 16px;
+        color: #e2e2e2;
+        max-width: 600px;
+        line-height: 1.6;
+        font-family: 'Inter', sans-serif;
+    }
+
+    /* --- 2. BLOG LIST SECTION --- */
+    .blog-section {
+        padding: 100px 5%;
+        background-color: var(--bg-light, #F9F8F6);
+    }
+
+    .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    .blog-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #eaeaea;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .blog-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .blog-img-wrapper {
+        position: relative;
+        width: 100%;
+        height: 220px;
+        overflow: hidden;
+    }
+
+    .blog-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .blog-card:hover .blog-img-wrapper img {
+        transform: scale(1.05);
+    }
+
+    .blog-category {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background-color: var(--light-green, #C68B59);
+        color: white;
+        padding: 5px 12px;
+        border-radius: 15px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .blog-content {
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .blog-meta {
+        font-size: 12px;
+        color: var(--text-gray, #666666);
+        margin-bottom: 10px;
+        display: flex;
+        gap: 15px;
+    }
+
+    .blog-card h3 {
+        font-family: 'Playfair Display', serif;
+        font-size: 20px;
+        margin-bottom: 12px;
+        color: var(--text-dark, #1E1E1E);
+        line-height: 1.4;
+    }
+
+    .blog-card p {
+        font-size: 14px;
+        color: var(--text-gray, #666666);
+        line-height: 1.6;
+        margin-bottom: 20px;
+        flex-grow: 1;
+    }
+
+    .btn-read-more {
+        color: var(--light-green, #C68B59);
+        font-weight: 700;
+        font-size: 14px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        transition: color 0.3s;
+    }
+
+    .btn-read-more:hover {
+        color: var(--dark-green, #2C1D11);
+    }
+
+    /* RESPONSIVE MEDIA QUERIES */
+    @media (max-width: 900px) {
+        .blog-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 600px) {
+        .blog-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .blog-hero h1 {
+            font-size: 40px;
+        }
+    }
+</style>
+
+<!-- 1. HERO BANNER -->
+<section class="blog-hero">
+    <h1>Articles & News</h1>
+    <p>Insights, Industry Trends, and Guides on Pure Indonesian Vanilla</p>
+</section>
+
+<!-- 2. BLOG GRID SECTION -->
+<section class="blog-section">
+    <div class="blog-grid container">
+
+        <!-- OPSI A: Menggunakan Looping Otomatis Jekyll (jika ada folder _posts) -->
+        {% if site.posts.size > 0 %}
+          {% for post in site.posts %}
+          <article class="blog-card">
+              <div class="blog-img-wrapper">
+                  <img src="{{ post.image | default: '/gambar/gindex.png' | relative_url }}" alt="{{ post.title }}">
+                  <span class="blog-category">{{ post.category | default: 'Vanilla Insight' }}</span>
+              </div>
+              <div class="blog-content">
+                  <div class="blog-meta">
+                      <span>📅 {{ post.date | date: "%b %d, %Y" }}</span>
+                      <span>✍️ {{ post.author | default: 'Essence Team' }}</span>
+                  </div>
+                  <h3>{{ post.title }}</h3>
+                  <p>{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+                  <a href="{{ post.url | relative_url }}" class="btn-read-more">Read More &rarr;</a>
+              </div>
+          </article>
+          {% endfor %}
+
+        <!-- OPSI B: Tampilan Statis Fallback (Jika belum ada berkas markdown di folder _posts) -->
+        {% else %}
+          <!-- Artikel 1 -->
+          <article class="blog-card">
+              <div class="blog-img-wrapper">
+                  <img src="{{ '/gambar/pvanila.png' | relative_url }}" alt="Understanding Planifolia vs Tahitensis">
+                  <span class="blog-category">Guide</span>
+              </div>
+              <div class="blog-content">
+                  <div class="blog-meta">
+                      <span>📅 May 10, 2026</span>
+                      <span>✍️ Admin</span>
+                  </div>
+                  <h3>Understanding Planifolia vs Tahitensis Vanilla Beans</h3>
+                  <p>Discover the key differences in flavor profiles, vanillin content, and ideal culinary applications between these two famous vanilla species.</p>
+                  <a href="#" class="btn-read-more">Read More &rarr;</a>
+              </div>
+          </article>
+
+          <!-- Artikel 2 -->
+          <article class="blog-card">
+              <div class="blog-img-wrapper">
+                  <img src="{{ '/gambar/gfarmer.png' | relative_url }}" alt="Sustainable Vanilla Farming">
+                  <span class="blog-category">Agriculture</span>
+              </div>
+              <div class="blog-content">
+                  <div class="blog-meta">
+                      <span>📅 April 22, 2026</span>
+                      <span>✍️ Essence Team</span>
+                  </div>
+                  <h3>How Sustainable Farming Empowers Local Indonesian Farmers</h3>
+                  <p>Learn how direct sourcing and ethical curing practices support local communities while ensuring premium export quality.</p>
+                  <a href="#" class="btn-read-more">Read More &rarr;</a>
+              </div>
+          </article>
+
+          <!-- Artikel 3 -->
+          <article class="blog-card">
+              <div class="blog-img-wrapper">
+                  <img src="{{ '/gambar/gvpack.png' | relative_url }}" alt="Vanilla Storage Tips">
+                  <span class="blog-category">Export & B2B</span>
+              </div>
+              <div class="blog-content">
+                  <div class="blog-meta">
+                      <span>📅 March 15, 2026</span>
+                      <span>✍️ Quality Control</span>
+                  </div>
+                  <h3>Best Practices for Preserving Freshness in Bulk Vanilla Shipment</h3>
+                  <p>Proper vacuum packaging and climate control are essential for preserving moisture content and vanillin aroma during international transit.</p>
+                  <a href="#" class="btn-read-more">Read More &rarr;</a>
+              </div>
+          </article>
+        {% endif %}
+
+    </div>
+</section>

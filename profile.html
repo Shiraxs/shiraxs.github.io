@@ -1,10 +1,13 @@
-<?php include 'header.php'; ?>
+---
+layout: default
+title: Profile - Essence Indonesia
+---
 
 <!-- CSS KHUSUS HALAMAN PROFILE -->
 <style>
     /* --- 1. PROFILE HERO BANNER --- */
     .profile-hero {
-        background: linear-gradient(rgba(26, 59, 43, 0.6), rgba(26, 59, 43, 0.8)), url('https://images.unsplash.com/photo-1596646505708-7243c2005a96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover;
+        background: linear-gradient(rgba(59, 35, 20, 0.6), rgba(59, 35, 20, 0.8)), url('{{ "/gambar/hero-profile.jpg" | relative_url }}') center/cover;
         padding: 100px 5%;
         color: white;
     }
@@ -25,7 +28,7 @@
     /* --- 2. EMPOWERING FARMERS SECTION --- */
     .farmers-section {
         padding: 100px 5%;
-        background-color: var(--bg-light);
+        background-color: var(--bg-light, #F9F8F6);
     }
 
     .farmers-grid {
@@ -39,7 +42,8 @@
         font-size: 38px;
         line-height: 1.2;
         margin-bottom: 20px;
-        color: var(--text-dark);
+        color: var(--text-dark, #1E1E1E);
+        font-family: 'Playfair Display', serif;
     }
 
     .farmers-left-img {
@@ -52,7 +56,7 @@
 
     .farmers-left p {
         font-size: 14px;
-        color: var(--text-gray);
+        color: var(--text-gray, #666666);
         line-height: 1.7;
     }
 
@@ -60,12 +64,12 @@
         font-size: 26px;
         font-family: 'Playfair Display', serif;
         margin-bottom: 15px;
-        color: var(--text-dark);
+        color: var(--text-dark, #1E1E1E);
     }
 
     .farmers-right p {
         font-size: 14px;
-        color: var(--text-gray);
+        color: var(--text-gray, #666666);
         line-height: 1.7;
         margin-bottom: 25px;
     }
@@ -76,20 +80,37 @@
         margin-bottom: 40px;
     }
 
-    .btn-outline {
-        background: transparent;
-        border: 1px solid var(--light-green);
-        color: var(--light-green);
+    .btn-consult {
+        background-color: var(--light-green, #C68B59);
+        color: white;
         padding: 10px 25px;
         border-radius: 20px;
         font-weight: 600;
         font-size: 14px;
         text-decoration: none;
         transition: 0.3s;
+        display: inline-block;
+    }
+
+    .btn-consult:hover {
+        opacity: 0.9;
+    }
+
+    .btn-outline {
+        background: transparent;
+        border: 1px solid var(--light-green, #C68B59);
+        color: var(--light-green, #C68B59);
+        padding: 10px 25px;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 14px;
+        text-decoration: none;
+        transition: 0.3s;
+        display: inline-block;
     }
 
     .btn-outline:hover {
-        background: var(--light-green);
+        background: var(--light-green, #C68B59);
         color: white;
     }
 
@@ -114,7 +135,7 @@
     }
 
     .team-section .subtitle {
-        color: var(--light-green);
+        color: var(--light-green, #C68B59);
         font-style: italic;
         font-weight: 600;
         display: block;
@@ -125,7 +146,7 @@
     .team-section h2 {
         font-size: 38px;
         margin-bottom: 60px;
-        color: var(--text-dark);
+        color: var(--text-dark, #1E1E1E);
     }
 
     .team-grid {
@@ -162,39 +183,16 @@
         font-family: 'Inter', sans-serif;
         font-size: 18px;
         margin-bottom: 5px;
-        color: var(--text-dark);
+        color: var(--text-dark, #1E1E1E);
     }
 
     .team-info p {
         font-size: 13px;
-        color: var(--text-gray);
-        margin-bottom: 20px;
+        color: var(--text-gray, #666666);
+        margin-bottom: 0;
     }
 
-    .social-links {
-        display: flex;
-        gap: 8px;
-    }
-
-    .social-links a {
-        width: 28px;
-        height: 28px;
-        background: var(--light-green);
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 12px;
-        text-decoration: none;
-        transition: 0.3s;
-    }
-
-    .social-links a:hover {
-        background: var(--dark-green);
-    }
-
-    /* Responsif untuk layar kecil / mobile */
+    /* Responsif */
     @media (max-width: 900px) {
         .farmers-grid {
             grid-template-columns: 1fr;
@@ -213,7 +211,7 @@
 </style>
 
 <!-- 1. PROFILE HERO BANNER -->
-<section class="profile-hero" style="background: linear-gradient(rgba(59, 35, 20, 0.6), rgba(59, 35, 20, 0.8)), url('gambar/hero-profile.jpg') center/cover;">
+<section class="profile-hero">
     <h1>Profile</h1>
     <p>Pure Vanilla. Rich Heritage. Our Experts Driving Authentic Indonesian Vanilla Forward.</p>
 </section>
@@ -224,7 +222,7 @@
         <!-- Kolom Kiri -->
         <div class="farmers-left">
             <h2>Empowering Vanilla Farmers Behind Our Heritage</h2>
-            <img src="gambar/vanilla-plantation.jpg" alt="Vanilla Farmer" class="farmers-left-img">
+            <img src="{{ '/gambar/vanilla-plantation.jpg' | relative_url }}" alt="Vanilla Farmer" class="farmers-left-img">
             <p>Our farmers use sustainable and responsible farming practices, ensuring that every vanilla orchid is grown in harmony with nature. Evolving from a trusted family business, the tradition of meticulous hand-pollination and natural curing is reflected in the quality of the products we deliver.</p>
         </div>
 
@@ -234,13 +232,13 @@
             <p>Our vanilla beans are cultivated using methods that respect the tropical environment of Indonesia. We are committed to direct sourcing—eliminating unnecessary intermediaries to work directly with local farmers who share our values of craftsmanship, strict quality control, and integrity.</p>
 
             <div class="btn-group">
-                <a href="contact.php" class="btn-consult">Contact Us</a>
-                <a href="product.php" class="btn-outline">View Products</a>
+                <a href="{{ '/contact.html' | relative_url }}" class="btn-consult">Contact Us</a>
+                <a href="{{ '/product.html' | relative_url }}" class="btn-outline">View Products</a>
             </div>
 
             <div class="farmers-sub-images">
-                <img src="gambar/vanilla-flower.jpg" alt="Vanilla Orchid">
-                <img src="gambar/vanilla-curing.jpg" alt="Curing Vanilla">
+                <img src="{{ '/gambar/vanilla-flower.jpg' | relative_url }}" alt="Vanilla Orchid">
+                <img src="{{ '/gambar/vanilla-curing.jpg' | relative_url }}" alt="Curing Vanilla">
             </div>
         </div>
     </div>
@@ -251,11 +249,41 @@
     <span class="subtitle">Meet Our Team</span>
     <h2 style="font-family: 'Playfair Display', serif; font-size: 38px;">Meet the Visionaries Behind Our<br>Strict Quality Control</h2>
 
-    <!-- Bagian grid tim sama persis dengan aslinya -->
     <div class="team-grid container">
-        <!-- Paste block anggota tim (Budi Santoso dkk) dari file asli di sini -->
-        <!-- Karena tidak ada perubahan nama khusus dari PDF, Anda dapat menggunakan data template asli Anda -->
+        <!-- Anggota Tim 1 -->
+        <div class="team-card">
+            <img src="{{ '/gambar/team-1.jpg' | relative_url }}" alt="Founder & CEO">
+            <div class="team-info">
+                <h4>Founder & CEO</h4>
+                <p>Leading strategic vision and global vanilla distribution network.</p>
+            </div>
+        </div>
+
+        <!-- Anggota Tim 2 -->
+        <div class="team-card">
+            <img src="{{ '/gambar/team-2.jpg' | relative_url }}" alt="Head of Quality Control">
+            <div class="team-info">
+                <h4>Head of Quality Control</h4>
+                <p>Ensuring vanillin content standards and strict curing protocols.</p>
+            </div>
+        </div>
+
+        <!-- Anggota Tim 3 -->
+        <div class="team-card">
+            <img src="{{ '/gambar/team-3.jpg' | relative_url }}" alt="Farmer Partnership Lead">
+            <div class="team-info">
+                <h4>Farmer Partnership Lead</h4>
+                <p>Managing direct trade relationships with local Indonesian growers.</p>
+            </div>
+        </div>
+
+        <!-- Anggota Tim 4 -->
+        <div class="team-card">
+            <img src="{{ '/gambar/team-4.jpg' | relative_url }}" alt="Export & Operations Manager">
+            <div class="team-info">
+                <h4>Export & Operations</h4>
+                <p>Overseeing international shipping logistics and compliance.</p>
+            </div>
+        </div>
     </div>
 </section>
-
-<?php include 'footer.php'; ?>

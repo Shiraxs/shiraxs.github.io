@@ -1,10 +1,13 @@
-<?php include 'header.php'; ?>
+---
+layout: default
+title: Home - Essence Indonesia
+---
 
 <!-- CSS KHUSUS HALAMAN INDEX -->
 <style>
     /* --- 1. HERO SECTION --- */
     .hero {
-        background: linear-gradient(rgba(26, 59, 43, 0.5), rgba(26, 59, 43, 0.8)), url('https://images.unsplash.com/photo-1596646505708-7243c2005a96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover;
+        background: linear-gradient(rgba(59, 35, 20, 0.4), rgba(59, 35, 20, 0.7)), url('{{ "/gambar/gindex.png" | relative_url }}') center/cover;
         padding: 120px 5%;
         color: white;
         position: relative;
@@ -33,6 +36,11 @@
         font-weight: 600;
         display: inline-block;
         text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-learn:hover {
+        opacity: 0.9;
     }
 
     .hero-stats {
@@ -182,7 +190,7 @@
     }
 
     .video-banner {
-        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1505963507020-f47285c54d19?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover;
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('{{ "/gambar/vanilla-banner.jpg" | relative_url }}') center/cover;
         height: 400px;
         border-radius: 20px;
         display: flex;
@@ -191,22 +199,6 @@
         align-items: center;
         color: white;
         text-align: center;
-    }
-
-    .play-btn {
-        width: 60px;
-        height: 60px;
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(5px);
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 24px;
-        border: 1px solid white;
-        margin-bottom: 20px;
-        cursor: pointer;
-        color: white;
     }
 
     .video-banner h2 {
@@ -274,7 +266,7 @@
         padding-top: 20px;
     }
 
-    .why-list-item:first-child {
+    .why-list-item.first-item {
         border-top: none;
         padding-top: 0;
     }
@@ -284,108 +276,6 @@
         font-size: 16px;
         margin-bottom: 10px;
         color: #fff;
-    }
-
-    /* --- 4. RELIABLE SERVICES SECTION --- */
-    .experience-section {
-        padding: 100px 5%;
-        display: grid;
-        grid-template-columns: 1fr 1.2fr 1fr;
-        gap: 40px;
-        align-items: start;
-        background-color: var(--bg-light);
-    }
-
-    .exp-left .subtitle {
-        color: var(--light-green);
-        font-style: italic;
-        font-weight: 600;
-        display: block;
-        margin-bottom: 10px;
-    }
-
-    .exp-left h2 {
-        font-size: 38px;
-        line-height: 1.2;
-        margin-bottom: 20px;
-        font-family: 'Playfair Display', serif;
-    }
-
-    .exp-left p {
-        color: var(--text-gray);
-        margin-bottom: 30px;
-        font-size: 14px;
-    }
-
-    .exp-mid img {
-        width: 100%;
-        border-radius: 20px;
-        object-fit: cover;
-        height: 500px;
-    }
-
-    .exp-right {
-        padding-top: 20px;
-    }
-
-    .yellow-badge {
-        background-color: var(--lime-yellow);
-        padding: 30px;
-        border-radius: 20px;
-        display: inline-block;
-        margin-left: -50px;
-        position: relative;
-        z-index: 2;
-        margin-bottom: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    .yellow-badge h3 {
-        font-size: 48px;
-        margin: 0;
-        line-height: 1;
-        color: var(--text-dark);
-    }
-
-    .yellow-badge span {
-        font-family: 'Inter', sans-serif;
-        font-size: 14px;
-        color: var(--text-dark);
-        font-weight: 600;
-    }
-
-    .exp-right p {
-        font-size: 14px;
-        color: var(--text-gray);
-        margin-bottom: 20px;
-    }
-
-    .service-list {
-        list-style: none;
-        padding: 0;
-    }
-
-    .service-list li {
-        border-bottom: 1px solid #eee;
-        padding: 15px 0;
-        font-size: 14px;
-        color: var(--text-dark);
-        font-weight: 500;
-    }
-
-    .production-gallery {
-        padding: 0 5% 100px;
-        background-color: var(--bg-light);
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-    }
-
-    .production-gallery img {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        border-radius: 15px;
     }
 
     /* --- 5. OUR SOLUTIONS --- */
@@ -535,139 +425,38 @@
         margin: 0;
     }
 
-    /* --- 7. OUR VALUES & STATS --- */
-    .values-section {
-        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1596646505708-7243c2005a96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80') center/cover;
-        padding: 100px 5%;
-        text-align: center;
-        color: white;
-    }
-
-    .values-section .subtitle {
-        color: var(--light-green);
-        font-style: italic;
-        font-weight: 600;
+    .spec-desc {
         display: block;
-        margin-bottom: 10px;
+        margin-top: 5px;
+        text-transform: none;
     }
 
-    .values-section h2 {
-        font-size: 42px;
-        margin-bottom: 60px;
-        font-family: 'Playfair Display', serif;
-    }
-
-    .values-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-    }
-
-    .value-card {
-        background: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 40px 30px;
-        border-radius: 20px;
-        text-align: left;
-        transition: transform 0.3s;
-    }
-
-    .value-card:hover {
-        transform: translateY(-5px);
-    }
-
-    .value-icon {
-        background: var(--light-green);
-        width: 60px;
-        height: 60px;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 12px;
-        font-size: 24px;
-        margin-bottom: 20px;
-        color: white;
-    }
-
-    .value-card h3 {
-        font-size: 24px;
-        margin-bottom: 15px;
-        font-family: 'Playfair Display', serif;
-    }
-
-    .value-card p {
-        font-size: 14px;
-        color: #ddd;
-        line-height: 1.6;
-    }
-
-    .stats-section {
-        background-color: var(--dark-green);
-        padding: 80px 5%;
-        color: white;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 40px;
-    }
-
-    .stat-box h2 {
-        font-size: 48px;
-        margin-bottom: 10px;
-        color: white;
-        font-family: 'Playfair Display', serif;
-    }
-
-    .stat-box h4 {
-        font-family: 'Inter', sans-serif;
-        font-size: 18px;
-        margin-bottom: 10px;
-        font-weight: 700;
-    }
-
-    .stat-box p {
-        font-size: 13px;
-        color: #ccc;
-        line-height: 1.6;
-    }
-
+    /* --- RESPONSIVE MEDIA QUERIES --- */
     @media (max-width: 900px) {
+        .hero h1 {
+            font-size: 40px;
+        }
 
         .who-grid,
         .solutions-header,
-        .experience-section {
+        .features-3 {
             flex-direction: column;
-            display: block;
+            display: flex;
         }
 
         .who-images,
         .solutions-grid,
-        .spec-grid,
-        .values-grid,
-        .stats-section {
+        .spec-grid {
             grid-template-columns: 1fr;
-        }
-
-        .production-gallery {
-            grid-template-columns: 1fr;
-        }
-
-        .exp-mid img {
-            height: 300px;
-            margin-bottom: 20px;
-        }
-
-        .yellow-badge {
-            margin-left: 0;
         }
     }
 </style>
 
 <!-- 1. HERO SECTION -->
-<section class="hero" style="background: linear-gradient(rgba(59, 35, 20, 0.4), rgba(59, 35, 20, 0.7)), url('gambar/gindex.png') center/cover;">
+<section class="hero">
     <h1>Pure Vanilla.<br>Rich Heritage.</h1>
     <p>The True Essence of Indonesia in Every Batch. Harvested from optimal tropical soils, our vanilla possesses a signature rich aroma and naturally high vanillin concentration.</p>
-    <a href="product.php" class="btn-learn">Explore Products</a>
+    <a href="{{ '/product.html' | relative_url }}" class="btn-learn">Explore Products</a>
     <div class="hero-stats">
         <div>
             <h3>100%</h3>
@@ -691,15 +480,15 @@
             <span class="subtitle">Who We Are</span>
             <h2>Bringing the Authentic Taste of Vanilla to the World</h2>
             <p>Evolving from a trusted family business, every batch of our vanilla is meticulously hand-selected, naturally cured, and rigorously tested to ensure uniform sizing, proper moisture levels, and zero contamination.</p>
-            <a href="profile.php" class="btn-learn">Discover more</a>
+            <a href="{{ '/profile.html' | relative_url }}" class="btn-learn">Discover more</a>
         </div>
         <div class="who-images">
-            <img src="gambar/gfarmer.png" alt="Vanilla Farmer" class="img-tall">
+            <img src="{{ '/gambar/gfarmer.png' | relative_url }}" alt="Vanilla Farmer" class="img-tall">
             <div class="yellow-card">
                 <h4>Fresh and Natural</h4>
                 <p>100% Pure and Natural, No additives, preservatives, or artificial flavorings.</p>
             </div>
-            <img src="gambar/gvbeans.png" alt="Vanilla Beans" class="img-small">
+            <img src="{{ '/gambar/gvbeans.png' | relative_url }}" alt="Vanilla Beans" class="img-small">
         </div>
     </div>
 
@@ -730,9 +519,9 @@
 
 <!-- 3. WHY CHOOSE US -->
 <section class="video-banner-section">
-    <div class="video-banner container" style="background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('gambar/vanilla-banner.jpg') center/cover;">
+    <div class="video-banner container">
         <h2>Discover Our Premium Vanilla<br>Products Collection</h2>
-        <a href="contact.php" class="btn-learn">Contact Us Now!</a>
+        <a href="{{ '/contact.html' | relative_url }}" class="btn-learn">Contact Us Now!</a>
     </div>
 </section>
 
@@ -746,8 +535,8 @@
         </div>
     </div>
     <div class="why-col">
-        <img src="gambar/gvpack.png" alt="Vanilla Processing" class="why-img">
-        <div class="why-list-item" style="border:none; padding-top:0;">
+        <img src="{{ '/gambar/gvpack.png' | relative_url }}" alt="Vanilla Processing" class="why-img">
+        <div class="why-list-item first-item">
             <h4>Craftsmanship & Strict Quality Control</h4>
             <p>Every batch is meticulously hand-selected, naturally cured, and rigorously tested to ensure uniform sizing, proper moisture levels, and zero contamination.</p>
         </div>
@@ -769,90 +558,71 @@
     <div class="solutions-header">
         <div>
             <span class="subtitle">Our Products</span>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 42px;">Premium Vanilla Derivative Products</h2>
+            <h2>Premium Vanilla Derivative Products</h2>
         </div>
         <p>From gourmet beans to extracts and powders, we provide reliable and efficient vanilla solutions designed to support different business needs.</p>
     </div>
 
     <div class="solutions-grid">
-        <!-- Produk 1 -->
         <div class="sol-card yellow">
             <h3>🌱 Planifolia Vanilla</h3>
-            <img src="gambar/pvanila.png" alt="Planifolia Vanilla">
+            <img src="{{ '/gambar/pvanila.png' | relative_url }}" alt="Planifolia Vanilla">
             <p>Strong, classic vanilla with a slightly bitter aftertaste and high vanillin content (2%-3%). Ideal for baking and ice cream.</p>
-            <a href="product.php" class="btn-card">Learn more</a>
+            <a href="{{ '/product.html' | relative_url }}" class="btn-card">Learn more</a>
         </div>
-
-        <!-- Produk 2 -->
         <div class="sol-card green">
             <h3>🌸 Tahitensis Vanilla</h3>
-            <img src="gambar/tvanila.png" alt="Tahitensis Vanilla">
+            <img src="{{ '/gambar/tvanila.png' | relative_url }}" alt="Tahitensis Vanilla">
             <p>Lighter and sweeter with floral & fruity notes. Commonly used in perfumes, gourmet desserts, and premium pastries.</p>
-            <a href="product.php" class="btn-card">Learn more</a>
+            <a href="{{ '/product.html' | relative_url }}" class="btn-card">Learn more</a>
         </div>
-
-        <!-- Produk 3 -->
         <div class="sol-card green">
             <h3>❄️ Crystallized Vanilla</h3>
-            <img src="gambar/gcvanila.png" alt="Crystallized Vanilla">
+            <img src="{{ '/gambar/gcvanila.png' | relative_url }}" alt="Crystallized Vanilla">
             <p>Rare and high quality. Naturally crystallized vanilla beans with aromatic vanillin frost (>2.5%) for artisan desserts.</p>
-            <a href="product.php" class="btn-card">Learn more</a>
+            <a href="{{ '/product.html' | relative_url }}" class="btn-card">Learn more</a>
         </div>
-
-        <!-- Produk 4 -->
         <div class="sol-card green">
             <h3>✨ Vanilla Caviar</h3>
-            <img src="gambar/gcaviar.png" alt="Vanilla Caviar">
+            <img src="{{ '/gambar/gcaviar.png' | relative_url }}" alt="Vanilla Caviar">
             <p>Deep black with a natural glossy sheen. 100% pure vanilla seeds extracted from ripe pods for pastry toppings.</p>
-            <a href="product.php" class="btn-card">Learn more</a>
+            <a href="{{ '/product.html' | relative_url }}" class="btn-card">Learn more</a>
         </div>
-
-        <!-- Produk 5 -->
         <div class="sol-card yellow">
             <h3>🌰 Dried Vanilla Seeds</h3>
-            <img src="gambar/gseed.png" alt="Dried Vanilla Seeds">
+            <img src="{{ '/gambar/gseed.png' | relative_url }}" alt="Dried Vanilla Seeds">
             <p>Fine, dry, free-flowing seeds with low moisture. Concentrated aromatic flavor ideal for chocolate and spice blends.</p>
-            <a href="product.php" class="btn-card">Learn more</a>
+            <a href="{{ '/product.html' | relative_url }}" class="btn-card">Learn more</a>
         </div>
-
-        <!-- Produk 6 -->
         <div class="sol-card green">
             <h3>💨 Vanilla Powder</h3>
-            <img src="gambar/gpowder.png" alt="Vanilla Powder">
+            <img src="{{ '/gambar/gpowder.png' | relative_url }}" alt="Vanilla Powder">
             <p>Fine powder made from dried premium vanilla beans. Excellent for dry rubs and applications where liquid extract is not suitable.</p>
-            <a href="product.php" class="btn-card">Learn more</a>
+            <a href="{{ '/product.html' | relative_url }}" class="btn-card">Learn more</a>
         </div>
-
-        <!-- Produk 7 -->
         <div class="sol-card green">
-            <h3>🍯 Vanilla Paste (Natural)</h3>
-            <img src="gambar/gpaste.png" alt="Vanilla Paste">
+            <h3>🥣 Vanilla Paste (Natural)</h3>
+            <img src="{{ '/gambar/gpaste.png' | relative_url }}" alt="Vanilla Paste">
             <p>Thick paste-like consistency with visible seeds. 100% natural, ideal for premium gelato and pastry creams.</p>
-            <a href="product.php" class="btn-card">Learn more</a>
+            <a href="{{ '/product.html' | relative_url }}" class="btn-card">Learn more</a>
         </div>
-
-        <!-- Produk 8 -->
         <div class="sol-card green">
             <h3>🧪 Vanilla Extract Alcohol</h3>
-            <img src="gambar/gextract.png" alt="Vanilla Extract Alcohol">
+            <img src="{{ '/gambar/gextract.png' | relative_url }}" alt="Vanilla Extract Alcohol">
             <p>Natural extract using food-grade ethanol & water. Deep, rich, aromatic liquid for gourmet sauces and luxury gelato.</p>
-            <a href="product.php" class="btn-card">Learn more</a>
+            <a href="{{ '/product.html' | relative_url }}" class="btn-card">Learn more</a>
         </div>
-
-        <!-- Produk 9 -->
         <div class="sol-card yellow">
             <h3>💧 Vanilla Extract Non-Alcohol</h3>
-            <img src="gambar/gextractna.png" alt="Vanilla Extract Non-Alcohol">
+            <img src="{{ '/gambar/gextractna.png' | relative_url }}" alt="Vanilla Extract Non-Alcohol">
             <p>100% natural, non-alcoholic extract. Perfect for formulations and products that limit or completely exclude alcohol.</p>
-            <a href="product.php" class="btn-card">Learn more</a>
+            <a href="{{ '/product.html' | relative_url }}" class="btn-card">Learn more</a>
         </div>
-
-        <!-- Produk 10 -->
         <div class="sol-card green">
             <h3>🥣 Vanilla Essence</h3>
-            <img src="gambar/gessence.png" alt="Vanilla Essence">
+            <img src="{{ '/gambar/gessence.png' | relative_url }}" alt="Vanilla Essence">
             <p>Concentrated flavoring formulated for mass-market bakery and beverages where cost efficiency is key.</p>
-            <a href="product.php" class="btn-card">Learn more</a>
+            <a href="{{ '/product.html' | relative_url }}" class="btn-card">Learn more</a>
         </div>
     </div>
 </section>
@@ -867,39 +637,37 @@
             <div class="spec-icon">📦</div>
             <span>Packaging</span>
             <h4>Vacuum Sealed</h4>
-            <span style="display:block; margin-top:5px; text-transform:none;">1kg, 5kg, 10kg boxes or HDPE Bottles (1L)</span>
+            <span class="spec-desc">1kg, 5kg, 10kg boxes or HDPE Bottles (1L)</span>
         </div>
         <div class="spec-item">
             <div class="spec-icon">⚖️</div>
             <span>Minimum Order</span>
             <h4>1 KG / 1 L</h4>
-            <span style="display:block; margin-top:5px; text-transform:none;">Trial Orders Welcome</span>
+            <span class="spec-desc">Trial Orders Welcome</span>
         </div>
         <div class="spec-item">
             <div class="spec-icon">🏭</div>
             <span>Production Capacity</span>
             <h4>5-10 Tons</h4>
-            <span style="display:block; margin-top:5px; text-transform:none;">Per Harvest Season (Gourmet Beans)</span>
+            <span class="spec-desc">Per Harvest Season (Gourmet Beans)</span>
         </div>
         <div class="spec-item">
             <div class="spec-icon">⏱️</div>
             <span>Lead Time</span>
             <h4>7-10 Days</h4>
-            <span style="display:block; margin-top:5px; text-transform:none;">Ready Stock / After payment confirmation</span>
+            <span class="spec-desc">Ready Stock / After payment confirmation</span>
         </div>
         <div class="spec-item">
             <div class="spec-icon">🚢</div>
             <span>Shipping Terms</span>
             <h4>FOB / CIF / EXW</h4>
-            <span style="display:block; margin-top:5px; text-transform:none;">Semarang Port / Air Freight via DHL/FedEx</span>
+            <span class="spec-desc">Semarang Port / Air Freight via DHL/FedEx</span>
         </div>
         <div class="spec-item">
             <div class="spec-icon">📜</div>
             <span>Quality Standard</span>
             <h4>Food-Grade</h4>
-            <span style="display:block; margin-top:5px; text-transform:none;">HACCP-compliant, 100% Pure, No additives</span>
+            <span class="spec-desc">HACCP-compliant, 100% Pure, No additives</span>
         </div>
     </div>
 </section>
-
-<?php include 'footer.php'; ?>
