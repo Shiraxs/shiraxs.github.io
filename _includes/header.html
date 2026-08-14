@@ -160,14 +160,14 @@
     </a>
 
     <!-- TOMBOL MOBILE TOGGLE -->
-    <button class="menu-toggle" id="mobile-menu-btn" aria-label="Toggle Navigation">
+    <button class="menu-toggle" id="mobile-menu-btn" type="button" aria-label="Buka menu navigasi" aria-controls="nav-wrapper" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
     </button>
 
     <!-- WRAPPER NAVIGASI -->
-    <div class="nav-wrapper" id="nav-wrapper">
+    <nav class="nav-wrapper" id="nav-wrapper" aria-label="Navigasi utama">
         <ul class="nav-links">
             <li>
                 <a href="{{ '/' | relative_url }}" class="{% if page.url == '/' or page.url == '/index.html' %}active{% endif %}">Home</a>
@@ -183,7 +183,7 @@
             </li>
         </ul>
         <a href="{{ '/contact.html' | relative_url }}" class="btn-contact">Contact Us</a>
-    </div>
+    </nav>
 </header>
 
 <!-- JAVASCRIPT TOGGLE MENU MOBILE -->
@@ -194,13 +194,17 @@
 
         if (menuBtn && navWrapper) {
             menuBtn.addEventListener('click', function () {
-                navWrapper.classList.toggle('active');
+                const isOpen = navWrapper.classList.toggle('active');
+                menuBtn.setAttribute('aria-expanded', String(isOpen));
+                menuBtn.setAttribute('aria-label', isOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi');
             });
 
             // Tutup menu saat mengeklik di luar area navigasi
             document.addEventListener('click', function (event) {
                 if (!navWrapper.contains(event.target) && !menuBtn.contains(event.target)) {
                     navWrapper.classList.remove('active');
+                    menuBtn.setAttribute('aria-expanded', 'false');
+                    menuBtn.setAttribute('aria-label', 'Buka menu navigasi');
                 }
             });
         }
